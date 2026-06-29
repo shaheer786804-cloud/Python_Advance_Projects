@@ -20,8 +20,8 @@ while True:
     print("2.to move data")
     choice = input("Enter Your Choice :" )
     if choice == "1":
-        import copy   
+        import Copy.copy   
     
     if choice == "2":
-        import move
+        import Move.move
         
