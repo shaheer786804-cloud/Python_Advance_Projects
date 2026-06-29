@@ -30,4 +30,4 @@ To run this script, you only need Python installed on your system. It relies ent
 4. Run the script using the following command:
 
 ```bash
-python file_organizer.py
+python main.py
