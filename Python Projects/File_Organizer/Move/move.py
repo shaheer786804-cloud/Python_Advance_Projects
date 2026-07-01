@@ -18,7 +18,7 @@ while True:
         destination_path = os.path.join(folder_location, file_new_name)
         
         s.move(file, destination_path)
-        print(f"Successfully moved and saved to: {destination_path}")
+        print(f"Successfully moved and saved to its destination")
         
     except Exception as e:
         print("An error occurred:", e)
