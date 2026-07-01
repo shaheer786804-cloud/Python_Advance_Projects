@@ -1,33 +1,32 @@
-# Password Strength Checker
+# Regex Password Strength Checker
 
-A simple, interactive Python script that evaluates the strength of a user-provided password based on its length and character diversity.
+A highly optimized, interactive Python script that evaluates the strength of a user-provided password using Regular Expressions (Regex) for instant pattern matching.
 
 ## Features
 
-- **Length Validation:** Ensures passwords are between 8 and 20 characters long.
-- **Character Diversity Checks:** Scans for lowercase letters, uppercase letters, numbers, and special characters.
-- **Granular Strength Ratings:** Categorizes passwords into four distinct strength levels:
-  - 💪 **Very Strong:** Contains all 4 character types.
-  - 👍 **Strong Enough:** Contains any 3 character types.
-  - ⚠️ **Not Strong Enough:** Contains any 2 character types.
-  - ❌ **Too Weak:** Contains only 1 character type.
+- **Length Validation:** Restricts passwords strictly to a healthy range of 8 to 20 characters.
+- **Regex-Powered Scanning:** Utilizes Python's native `re` module to instantly detect character categories without messy, memory-heavy lookup lists.
+- **Granular Strength Ratings:** Automatically groups findings into four clean categories:
+  - 💪 **Very Strong:** Features lowercase, uppercase, numbers, and symbols.
+  - 👍 **Strong Enough:** Misses only 1 category.
+  - ⚠️ **Not Strong Enough:** Features only 2 categories.
+  - ❌ **Too Weak:** Features only 1 single category.
 
 ---
 
 ## Prerequisites
 
-Before running the script, make sure you have Python installed on your system:
 - Python 3.x
 
-The script uses the standard library `time` module, so no external package installations (`pip`) are required.
+This script depends entirely on built-in standard libraries (`re` and `time`), meaning **no external packages or installations (`pip`) are required**.
 
 ---
 
 ## How to Run
 
-1. **Clone or Download the Repository:**
-   Save the script file as `password_checker.py`.
+1. **Save the Code:** 
+   Save your script locally as `password_checker.py`.
 
-2. **Open your Terminal or Command Prompt and run:**
+2. **Run via Terminal/Command Prompt:**
    ```bash
    python password_checker.py
