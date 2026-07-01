@@ -8,17 +8,17 @@ while True:
     
     try:
         if folder_location == "":
-           destination_path = file_copy_name 
+            destination_path = file_copy_name 
 
         else:
-         not os.path.exists(folder_location)
-         os.makedirs(folder_location)
-         print(f"Created new directory: {folder_location}")
+            not os.path.exists(folder_location)
+            os.makedirs(folder_location)
+            print(f"Created new directory: {folder_location}")
 
         destination_path = os.path.join(folder_location, file_copy_name)
         
         s.copy(file, destination_path)
-        print(f"Successfully copied and saved to: {destination_path}")
+        print(f"Successfully copied and saved to its destination")
         
     except Exception as e:
         print("An error occurred:", e)
