@@ -76,3 +76,5 @@ if urls:
     logging.info("-> Results saved to 'urls_result.json'")
 else:
     logging.warning("No URLs to process.")
+
+# Programs ends here
