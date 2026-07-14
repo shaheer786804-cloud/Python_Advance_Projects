@@ -93,45 +93,44 @@ def website_status_monitor():
 
 
     elif choice == '2' :
-        url = input("Enter your choice: ")
+        url = input("Enter the URL: ").strip()
 
         if url:
             json_results = []
-                    # Open the CSV file for writing
+            
+            # Open the CSV file for writing
             with open('urls_result.csv', 'w', newline='', encoding='utf-8') as csv_file:
                 csv_writer = csv.writer(csv_file)
                 csv_writer.writerow(['URL', 'Status Code', 'Result']) 
                 
-                # Loop through every URL loaded from the file
-                for url in urls:
-                    logging.info(f"Testing connection to: {url}")
-                    try:
-                        # Send the HTTP GET request
-                        response = req.get(url, timeout=5)
-                        status = response.status_code
-                        
-                        if status == 200:
-                            result_msg = "Success! The website is up and running."
-                            logging.info(f"{url} - Status: {status} - {result_msg}")
-                        else:
-                            result_msg = f"Website returned an issue. Status: {status}"
-                            logging.warning(f"{url} - Status: {status} - {result_msg}")
-                            
-                    except req.exceptions.RequestException as e:
-                        status = "ERROR"
-                        result_msg = f"Network error: {str(e)}"
-                        logging.error(f"Could not connect to {url}. Error details: {e}")
-                        
-                    # A. Write the data into the CSV row
-                    csv_writer.writerow([url, status, result_msg])
+                logging.info(f"Testing connection to: {url}")
+                try:
+                    # Send the HTTP GET request
+                    response = req.get(url, timeout=5)
+                    status = response.status_code
                     
-                    # B. Create a dictionary for this URL and append it to our JSON list
-                    url_data = {
-                        "url": url,
-                        "status_code": status,
-                        "result": result_msg
-                    }
-                    json_results.append(url_data)
+                    if status == 200:
+                        result_msg = "Success! The website is up and running."
+                        logging.info(f"{url} - Status: {status} - {result_msg}")
+                    else:
+                        result_msg = f"Website returned an issue. Status: {status}"
+                        logging.warning(f"{url} - Status: {status} - {result_msg}")
+                        
+                except req.exceptions.RequestException as e:
+                    status = "ERROR"
+                    result_msg = f"Network error: {str(e)}"
+                    logging.error(f"Could not connect to {url}. Error details: {e}")
+                    
+                # A. Write the data into the CSV row
+                csv_writer.writerow([url, status, result_msg])
+                
+                # B. Create a dictionary for this URL and append it to our JSON list
+                url_data = {
+                    "url": url,
+                    "status_code": status,
+                    "result": result_msg
+                }
+                json_results.append(url_data)
 
             # 4. Save all collected data into a JSON file
             with open('urls_result.json', 'w', encoding='utf-8') as json_file:
@@ -141,12 +140,14 @@ def website_status_monitor():
             logging.info("-> Results saved to 'urls_result.csv'")
             logging.info("-> Results saved to 'urls_result.json'")
         else:
-            logging.warning("No URLs to process.")
+            logging.warning("No URL was entered.")
+            
     elif choice == '3':
         print("Exiting the Website status monitor")
         print("-" * 15)
-        print("Good By")
+        print("Good Bye")
         print("-" * 15)
+        exit() 
 
     else :
         print("-" * 15)
@@ -155,4 +156,4 @@ def website_status_monitor():
         
 
 while True:        
-    website_status_monitor()        
+    website_status_monitor()
